@@ -1,0 +1,23 @@
+<h2>Brand List</h2>
+<div class="search-wrapper">
+    <input [(ngModel)]="filterText" placeholder="🔎Seach Brands...">
+</div>
+<div *ngIf="filterBrands().length >0; else noBrands">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Brand Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let brand of filterBrands()">
+                <td>{{ brand.id}}</td>
+                <td>{{brand.name}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<ng-template #noBrands>
+    <p class="no-result">No brands match your search.</p>
+</ng-template>

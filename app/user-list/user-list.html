@@ -1,0 +1,25 @@
+<h2>User List</h2>
+<div class="search-wrapper">
+    <input [(ngModel)]="filterText" placeholder="🔎 Search Users...">
+</div>
+<div *ngIf="filterUsers().length >0; else noUsers">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of filterUsers()">
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<ng-template #noUsers>
+    <p class="no-result">No users match your search.</p>
+</ng-template>
